@@ -28,15 +28,9 @@ public class CalderaController {
 		return calderaRepository.findAll(pageable);
 	}
 	
-	@PostMapping()
-    public Caldera createQuestion(@Valid @RequestBody Caldera caldera) {
+	@PostMapping("/calcular")
+    public Caldera calcular(@Valid @RequestBody Caldera caldera) {
+		util.getValorZonaClimatica("-3.8166997", "43.4617696");
         return calderaRepository.save(caldera);
     }
-	
-	@GetMapping("/zonaClimatica")
-    public int getZonaClimatica() {
-		System.out.println("******************entramos en zonaClimatica");
-        return util.getValorZonaClimatica("-3.8166997", "43.4617696");
-    }
-
 }
