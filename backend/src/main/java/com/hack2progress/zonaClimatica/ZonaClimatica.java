@@ -17,6 +17,30 @@ public enum ZonaClimatica {
 		this.zona=zona;
 		this.horasSolaresPico=horasSolaresPico;
 	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public int getZona() {
+		return zona;
+	}
+
+	public void setZona(int zona) {
+		this.zona = zona;
+	}
+
+	public Double getHorasSolaresPico() {
+		return horasSolaresPico;
+	}
+
+	public void setHorasSolaresPico(Double horasSolaresPico) {
+		this.horasSolaresPico = horasSolaresPico;
+	}
 	
 	
 }
