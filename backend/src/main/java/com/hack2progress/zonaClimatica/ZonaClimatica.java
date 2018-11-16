@@ -10,12 +10,12 @@ public enum ZonaClimatica {
 	
 	private String nombre;
 	private int zona;
-	private Double irradiacionSolar;
+	private Double horasSolaresPico;
 	
-	private ZonaClimatica(String nombre, int zona, Double irradiacionSolar) {
+	private ZonaClimatica(String nombre, int zona, Double horasSolaresPico) {
 		this.nombre=nombre;
 		this.zona=zona;
-		this.irradiacionSolar=irradiacionSolar;
+		this.horasSolaresPico=horasSolaresPico;
 	}
 	
 	
