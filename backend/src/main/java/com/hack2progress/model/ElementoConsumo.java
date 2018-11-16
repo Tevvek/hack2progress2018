@@ -1,6 +1,9 @@
 package com.hack2progress.model;
 
 public class ElementoConsumo {
+	
+	private String nombre;
+	
 	private Double potencia;
 	
 	private Double horasUso;
@@ -25,6 +28,14 @@ public class ElementoConsumo {
 		super();
 		this.potencia = potencia;
 		this.horasUso = horasUso;
+	}
+	
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 	
 	
