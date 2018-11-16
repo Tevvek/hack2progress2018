@@ -16,12 +16,12 @@ public class Util {
 	@Value("${url.cartociudad}")
 	private String urlCartociudad;
 
-	public int getValorZonaClimatica(String lon, String lat) {
+	public Double getValorZonaClimatica(Double lon, Double lat) {
 		RestTemplate restTemplate = new RestTemplate();
-		String url = urlCartociudad + "lon=" + lon + "&lat=" + lat;
+		String url = urlCartociudad + "lon=" + lon.toString() + "&lat=" + lat.toString();
 		Cartociudad cartociudadResponse = restTemplate.getForObject(url, Cartociudad.class);
-		System.out.println(cartociudadResponse);
-		return 1;
+		//TODO devolver valor zona enum
+		return new Double("1.04");
 	}
 
 	public int getNumeroPanelesEstimacion(Double horasUsoCaldera, Caldera caldera, ZonaClimatica zonaClimatica,
