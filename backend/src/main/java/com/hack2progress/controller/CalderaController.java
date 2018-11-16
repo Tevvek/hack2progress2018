@@ -12,21 +12,31 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hack2progress.model.Caldera;
 import com.hack2progress.repository.CalderaRepository;
+import com.hack2progress.util.Util;
 
-@RestController
+@RestController("/caldera")
 public class CalderaController {
 	
 	@Autowired
 	private CalderaRepository calderaRepository;
 	
-	@GetMapping("/caldera/list")
+	@Autowired
+	private Util util;
+	
+	@GetMapping("/list")
 	public Page<Caldera> getCalderaList(Pageable pageable){
 		return calderaRepository.findAll(pageable);
 	}
 	
-	@PostMapping("/caldera")
+	@PostMapping()
     public Caldera createQuestion(@Valid @RequestBody Caldera caldera) {
         return calderaRepository.save(caldera);
+    }
+	
+	@GetMapping("/zonaClimatica")
+    public int getZonaClimatica() {
+		System.out.println("******************entramos en zonaClimatica");
+        return util.getValorZonaClimatica("-3.8166997", "43.4617696");
     }
 
 }
