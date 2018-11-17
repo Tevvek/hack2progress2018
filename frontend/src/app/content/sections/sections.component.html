@@ -6,6 +6,37 @@
     <div id="map"></div>
 </div>
 
+<div class="section" *ngIf="sections.elements">
+    <div class="question">
+        <span>¿Qué elementos quiere alimentar?</span>
+    </div>
+    <div class="answer answer-element">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Potencia</th>
+                    <th>Horas de uso</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let element of placas.elements; let i = index">
+                    <td>
+                        <input type="text" name="nombre-{{i}}" [(ngModel)]="element.nombre">
+                    </td>
+                    <td>
+                        <input min="0" type="number" name="potencia-{{i}}" [(ngModel)]="element.potencia">
+                    </td>
+                    <td>
+                        <input min="0" type="number" name="horas-{{i}}" [(ngModel)]="element.horas">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" (click)="addElement()">Añadir elemento</button>
+    </div>
+</div>
+
 <div class="section" *ngIf="sections.surface">
     <div class="question">
         <span>¿Cuantos metros cuadrados tiene la vivienda?</span>

@@ -2,6 +2,7 @@ import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter } fro
 import * as mapboxgl from 'mapbox-gl/dist/mapbox-gl';
 import { GeneralHttpService } from 'src/app/general-http.service';
 import { InfoService } from 'src/app/info.service';
+import { _getComponentHostLElementNode } from '@angular/core/src/render3/instructions';
 
 @Component({
   selector: 'app-sections',
@@ -14,6 +15,7 @@ export class SectionsComponent implements OnInit {
 
   //models
   calderas:any = {};
+  placas:any = {};
 
   sections:any;   
   center:any;
@@ -32,6 +34,10 @@ export class SectionsComponent implements OnInit {
       surface: '',
       isolation: '',
       orientation: ''
+    }
+    this.placas = {
+      latlng: [],
+      elements: []
     }
     this.sections = {
       'location': false,
@@ -125,7 +131,7 @@ export class SectionsComponent implements OnInit {
               section: 'geolocation',
               latlng: [e.lngLat.lat, e.lngLat.lng]
             });
-          this.calderas.latlng = [e.lngLat.lat, e.lngLat.lng];
+          this.calderas.latlng = this.placas.latlng = [e.lngLat.lat, e.lngLat.lng];
         });
 
         if(this.infoService.getLatLng() != undefined) {
@@ -176,8 +182,9 @@ export class SectionsComponent implements OnInit {
         })
         this.result = true;
       });
-    else if(this.type == 'placas')
-      this.generalHttpService.postPaneles(null);
+    else if(this.type == 'placas') {
+      this.generalHttpService.postPaneles(this.placas);
+    }
   }
 
   setSurface = (e) => {
@@ -281,4 +288,18 @@ export class SectionsComponent implements OnInit {
       this.lineChartData = chartData;
     }
 
+    addElement = () => {
+      // var length = this.elements.length;
+      // if(length == 0) {
+        // no hay
+        this.placas.elements.push({
+          nombre: '',
+          potencia: 0,
+          horasUso: 0
+        });
+      // } else {
+      //   var element = this.elements[length-1];
+      // }
+        console.log(this.placas.elements);
+    }
 }
