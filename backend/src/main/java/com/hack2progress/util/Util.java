@@ -103,9 +103,9 @@ public class Util {
 		
 		Double ampHoraNecesarios = (energiaNecesaria * diasAutonomia)/ (24*0.85);
 		
-		Integer numBaterias48V =  (int) Math.round (ampHoraNecesarios/ampHoraBateria);
+		Integer numBaterias =  (int) Math.round (ampHoraNecesarios/ampHoraBateria);
 		
-		return numBaterias48V;
+		return numBaterias;
 		
 		 
 	}
