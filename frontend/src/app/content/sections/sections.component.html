@@ -52,3 +52,33 @@
 </div>
 
 </form>
+
+<div id="result">
+    <!-- *ngIf="" -->
+    <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
+    <div id="line-chart">
+        <canvas
+            baseChart
+            width="400"
+            height="400"
+            [datasets]="lineChartData"
+            [labels]="lineChartLabels"
+            [options]="lineChartOptions"
+            [colors]="lineChartColors"
+            [legend]="lineChartLegend"
+            [chartType]="lineChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+    </div>
+    <div id="bar-chart">
+            <canvas baseChart
+                [datasets]="lineChartData"
+                [labels]="lineChartLabels"
+                [options]="lineChartOptions"
+                [legend]="lineChartLegend"
+                [chartType]="barChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+
+    </div>
+</div>
