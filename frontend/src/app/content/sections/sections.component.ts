@@ -122,7 +122,7 @@ export class SectionsComponent implements OnInit {
   }
 
   onSubmit = (e) => {
-    this.generalHttpService.test();
+    this.generalHttpService.test('a');
   }
 
 }

@@ -5,7 +5,7 @@ export class GeneralHttpService {
 
   constructor() { }
 
-  test = () => {
+  test = (t) => {
     console.log('hi');
   }
 }
