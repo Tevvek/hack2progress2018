@@ -1,4 +1,4 @@
-package com.hack2progress.zonaClimatica;
+package com.hack2progress.enumeraciones;
 
 public enum ZonaClimatica {
 	Z15("A Coruña", 3, new Double("1.5")),

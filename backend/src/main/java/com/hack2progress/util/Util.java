@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import com.hack2progress.enumeraciones.ZonaClimatica;
 import com.hack2progress.model.Caldera;
 import com.hack2progress.model.ElementoConsumo;
-import com.hack2progress.zonaClimatica.ZonaClimatica;
 
 @Component
 public class Util {
