@@ -1,0 +1,26 @@
+:host {
+    // border-bottom: 3px solid lightcoral;
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    justify-content: space-around;
+    height: 100%;
+    align-items: center;
+    li {
+        flex: 1;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        a {
+            color: #d9534f;
+            &.completed {
+                color: #5cb85c;
+            }
+        }
+    }
+}
+

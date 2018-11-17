@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import com.hack2progress.enumeraciones.ZonaClimatica;
-import com.hack2progress.model.Caldera;
 import com.hack2progress.model.ElementoConsumo;
 
 @Component
@@ -24,7 +23,8 @@ public class Util {
 		return new Double("1.04");
 	}
 
-	public int getNumeroPanelesEstimacion(Double horasUsoCaldera, Double potenciaCaldera, ZonaClimatica zonaClimatica,
+	// No viable para caldera
+/*	public static int getNumeroPanelesEstimacion(Double horasUsoCaldera, Double potenciaCaldera, ZonaClimatica zonaClimatica,
 			List<ElementoConsumo> elementos) {
 
 		Double consumoDiario = horasUsoCaldera * potenciaCaldera;
@@ -35,13 +35,38 @@ public class Util {
 		}
 		Double energiaNecesaria = consumoDiario / 0.75;
 
-		Integer numPaneles = (int) Math.round(energiaNecesaria / (zonaClimatica.getHorasSolaresPico() * 0.8 + 180));
+		Integer numPaneles = (int) Math.round(energiaNecesaria / (zonaClimatica.getHorasSolaresPico() * 0.8 * 180));
+		return numPaneles;
+	}*/
+	
+	public static int getNumeroPanelesEstimacion(ZonaClimatica zonaClimatica,List<ElementoConsumo> elementos) {
+		Double consumoDiario = 0.0;
+	//	Double consumoDiario = horasUsoCaldera * potenciaCaldera;
+		if (elementos != null && elementos.size() > 0) {
+			for (ElementoConsumo elemento : elementos) {
+				consumoDiario = consumoDiario + (elemento.getPotencia() * elemento.getHorasUso());
+			}
+		}
+		Double energiaNecesaria = consumoDiario / 0.75;
+
+		Integer numPaneles = (int) Math.round(energiaNecesaria / (zonaClimatica.getHorasSolaresPico() * 0.8 * 180));
 		return numPaneles;
 	}
 
-	public Double ponteciaConvertidor(Caldera caldera, List<ElementoConsumo> elementos) {
+/*	public Double ponteciaConvertidor(Caldera caldera, List<ElementoConsumo> elementos) {
 
 		Double potenciaConsumo = caldera.getPotencia();
+		for (ElementoConsumo elementoConsumo : elementos) {
+			if (elementos != null && elementos.size() > 0) {
+				potenciaConsumo = potenciaConsumo + elementoConsumo.getPotencia();
+			}
+
+		}
+		return potenciaConsumo / 0.7;
+	}
+	*/
+	public static Double ponteciaConvertidor( List<ElementoConsumo> elementos) {
+		Double potenciaConsumo = 0.0;
 		for (ElementoConsumo elementoConsumo : elementos) {
 			if (elementos != null && elementos.size() > 0) {
 				potenciaConsumo = potenciaConsumo + elementoConsumo.getPotencia();

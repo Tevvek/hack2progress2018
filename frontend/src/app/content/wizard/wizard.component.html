@@ -1,0 +1,8 @@
+<ul>
+  <li *ngFor="let step of steps">
+    <a [ngClass]="{'completed': step.completed}">
+      <i class="fas {{step.icon}}"></i>
+      <span>{{step.title}}</span>
+    </a>
+  </li>
+</ul>

@@ -2,8 +2,8 @@ package com.hack2progress.model;
 
 public class ElementoConsumo {
 	private String nombre;
-	private Double potencia;
-	private Double horasUso;
+	private int potencia;
+	private int horasUso;
 	
 	public String getNombre() {
 		return nombre;
@@ -11,17 +11,25 @@ public class ElementoConsumo {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public Double getPotencia() {
+	public int getPotencia() {
 		return potencia;
 	}
-	public void setPotencia(Double potencia) {
+	public void setPotencia(int potencia) {
 		this.potencia = potencia;
 	}
-	public Double getHorasUso() {
+	
+	public int getHorasUso() {
 		return horasUso;
 	}
-	public void setHorasUso(Double horasUso) {
+	public void setHorasUso(int horasUso) {
 		this.horasUso = horasUso;
+	}
+	
+	public ElementoConsumo(String nombre, int i, int j) {
+		super();
+		this.nombre = nombre;
+		this.potencia = i;
+		this.horasUso = j;
 	}
 	
 
