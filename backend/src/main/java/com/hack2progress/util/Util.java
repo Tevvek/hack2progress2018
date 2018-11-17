@@ -24,10 +24,10 @@ public class Util {
 		return new Double("1.04");
 	}
 
-	public int getNumeroPanelesEstimacion(Double horasUsoCaldera, Caldera caldera, ZonaClimatica zonaClimatica,
+	public int getNumeroPanelesEstimacion(Double horasUsoCaldera, Double potenciaCaldera, ZonaClimatica zonaClimatica,
 			List<ElementoConsumo> elementos) {
 
-		Double consumoDiario = horasUsoCaldera * caldera.getPotencia();
+		Double consumoDiario = horasUsoCaldera * potenciaCaldera;
 		if (elementos != null && elementos.size() > 0) {
 			for (ElementoConsumo elemento : elementos) {
 				consumoDiario = consumoDiario + (elemento.getPotencia() * elemento.getHorasUso());

@@ -1,13 +1,18 @@
 package com.hack2progress.model.dto;
 
+import java.util.List;
+
 public class CalculoDTO {
 	private int superficie;
 	private String orientacion;
 	private String aislamiento;
 	private PosicionDTO posicion;
+	private List<ElementoDTO> elementosConsumo;
+	
 	public int getSuperficie() {
 		return superficie;
 	}
+	
 	public void setSuperficie(int superficie) {
 		this.superficie = superficie;
 	}
@@ -69,5 +74,12 @@ public class CalculoDTO {
 	}
 	public void setPosicion(PosicionDTO posicion) {
 		this.posicion = posicion;
+	}
+	
+	public List<ElementoDTO> getElementosConsumo() {
+		return elementosConsumo;
+	}
+	public void setElementosConsumo(List<ElementoDTO> elementosConsumo) {
+		this.elementosConsumo = elementosConsumo;
 	}
 }

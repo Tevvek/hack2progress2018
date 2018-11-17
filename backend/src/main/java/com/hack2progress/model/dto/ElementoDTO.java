@@ -1,6 +1,6 @@
-package com.hack2progress.model;
+package com.hack2progress.model.dto;
 
-public class ElementoConsumo {
+public class ElementoDTO {
 	private String nombre;
 	private Double potencia;
 	private Double horasUso;
@@ -23,6 +23,4 @@ public class ElementoConsumo {
 	public void setHorasUso(Double horasUso) {
 		this.horasUso = horasUso;
 	}
-	
-
 }
