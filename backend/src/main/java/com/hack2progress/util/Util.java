@@ -20,7 +20,7 @@ public class Util {
 		String url = urlCartociudad + "lon=" + lon.toString() + "&lat=" + lat.toString();
 		Cartociudad cartociudadResponse = restTemplate.getForObject(url, Cartociudad.class);
 		//TODO devolver valor zona enum
-		ZonaClimatica zonaClimatica = ZonaClimatica.valueOf(cartociudadResponse.getProvince());
+		ZonaClimatica zonaClimatica = ZonaClimatica.getByNombre(cartociudadResponse.getProvince());
 		return zonaClimatica.getZona();
 	}
 
@@ -75,5 +75,24 @@ public class Util {
 
 		}
 		return potenciaConsumo / 0.7;
+	}
+	
+	public static Integer numeroBaterias ( List<ElementoConsumo> elementos, Integer diasAutonomia, Integer ampHoraBateria) {
+		Double consumoDiario = 0.0;
+
+		if (elementos != null && elementos.size() > 0) {
+			for (ElementoConsumo elemento : elementos) {
+				consumoDiario = consumoDiario + (elemento.getPotencia() * elemento.getHorasUso());
+			}
+		}
+		Double energiaNecesaria = consumoDiario / 0.75;
+		
+		Double ampHoraNecesarios = (energiaNecesaria * diasAutonomia)/ (24*0.85);
+		
+		Integer numBaterias48V =  (int) Math.round (ampHoraNecesarios/ampHoraBateria);
+		
+		return numBaterias48V;
+		
+		 
 	}
 }
