@@ -13,14 +13,14 @@ import com.hack2progress.model.dto.CalculoDTO;
 import com.hack2progress.model.dto.response.CalderaResponse;
 import com.hack2progress.service.CalderaService;
 
-@RestController("/caldera")
+@RestController
 public class CalderaController {
 	
 	@Autowired
 	private CalderaService calderaService;
 	
 	@GetMapping("/pruebas")
-	public int pruebas(@RequestBody CalculoDTO calculo) {
+	public int pruebas() {
 		System.out.println("entramossssssssss");
 		return 1;
     }
