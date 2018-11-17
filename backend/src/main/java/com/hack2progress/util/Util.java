@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import com.hack2progress.enumeraciones.ZonaClimatica;
-import com.hack2progress.model.ElementoConsumo;
 import com.hack2progress.model.dto.ElementoDTO;
 
 @Component
@@ -24,6 +23,16 @@ public class Util {
 		ZonaClimatica zonaClimatica = ZonaClimatica.getByNombre(cartociudadResponse.getProvince());
 		return zonaClimatica.getZona();
 	}
+	
+	public Double getHorasSolaresPico(Double lon, Double lat) {
+		RestTemplate restTemplate = new RestTemplate();
+		String url = urlCartociudad + "lon=" + lon.toString() + "&lat=" + lat.toString();
+		Cartociudad cartociudadResponse = restTemplate.getForObject(url, Cartociudad.class);
+		//TODO devolver valor zona enum
+		ZonaClimatica zonaClimatica = ZonaClimatica.getByNombre(cartociudadResponse.getProvince());
+		return zonaClimatica.getHorasSolaresPico();
+	}
+
 	
 	public Double round(Double valor) {
 		return Math.round(valor*100.0)/100.0;
