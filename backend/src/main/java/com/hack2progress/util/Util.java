@@ -25,13 +25,8 @@ public class Util {
 		return zonaClimatica.getZona();
 	}
 	
-	public Double getHorasSolaresPico(Double lon, Double lat) {
-		RestTemplate restTemplate = new RestTemplate();
-		String url = urlCartociudad + "lon=" + lon.toString() + "&lat=" + lat.toString();
-		Cartociudad cartociudadResponse = restTemplate.getForObject(url, Cartociudad.class);
-		//TODO devolver valor zona enum
-		ZonaClimatica zonaClimatica = ZonaClimatica.getByNombre(cartociudadResponse.getProvince());
-		return zonaClimatica.getHorasSolaresPico();
+	public Double round(Double valor) {
+		return Math.round(valor*100.0)/100.0;
 	}
 
 	// No viable para caldera
