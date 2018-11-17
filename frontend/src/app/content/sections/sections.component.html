@@ -52,7 +52,7 @@
 
 </form>
 
-<div id="result">
+<div id="result" *ngIf="result">
     <div id="left">
         <div id="line-chart">
                 <canvas
@@ -82,12 +82,14 @@
             <thead>
                 <tr>
                     <th>Tipo caldera</th>
+                    <th>Potencia</th>
                     <th>Gasto anual</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let rowTabla of rows">
                     <td>{{rowTabla.tipoCaldera}}</td>
+                    <td>{{rowTabla.potencia}}</td>
                     <td>{{rowTabla.gastoAnualEstimado}}</td>
                 </tr>
             </tbody>

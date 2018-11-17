@@ -80,38 +80,6 @@ export class SectionsComponent implements OnInit {
     this.cd.detectChanges();
     this.initMap();
 
-    this.rows = [
-      {
-          "tipoCaldera": "BIOMASA",
-          "potencia": 11.05,
-          "inversionInicialEstimada": 6500,
-          "gastoAnualEstimado": 791.74
-      },
-      {
-          "tipoCaldera": "GASOLEO",
-          "potencia": 20,
-          "inversionInicialEstimada": 2500,
-          "gastoAnualEstimado": 2750.3
-      },
-      {
-          "tipoCaldera": "GAS",
-          "potencia": 20,
-          "inversionInicialEstimada": 1000,
-          "gastoAnualEstimado": 3161.64
-      },
-      {
-          "tipoCaldera": "ELÉCTRICA",
-          "potencia": 20,
-          "inversionInicialEstimada": 1000,
-          "gastoAnualEstimado": 3796
-      },
-      {
-          "tipoCaldera": "GAS NATURAL",
-          "potencia": 20,
-          "inversionInicialEstimada": 1000,
-          "gastoAnualEstimado": 518.36
-      }
-   ]
   }
 
   initMap = () => {
@@ -185,9 +153,14 @@ export class SectionsComponent implements OnInit {
     this.sections.orientation = true;
   }
 
+  result = false;
   onSubmit = (e) => {
     if(this.type == 'calderas')
-      this.generalHttpService.postCalderas(this.calderas);
+      this.generalHttpService.postCalderas(this.calderas).then(calderasRes => {
+        this.setResultCharts(calderasRes);
+        this.rows = calderasRes;
+        this.result = true;
+      });
     else if(this.type == 'placas')
       this.generalHttpService.postPaneles(null);
   }
@@ -213,12 +186,7 @@ export class SectionsComponent implements OnInit {
     })
   }
 
-  public lineChartData:Array<any> = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'},
-    {data: [18, 48, 77, 9, 100, 27, 40], label: 'Series C'}
-  ];
-  public lineChartLabels:Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  public lineChartLabels:Array<any> = ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027'];
   public lineChartOptions:any = {
     responsive: true
   };
@@ -246,7 +214,7 @@ export class SectionsComponent implements OnInit {
       pointBackgroundColor: 'rgba(148,159,177,1)',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'  
     }
   ];
   public lineChartLegend:boolean = true;
@@ -260,6 +228,26 @@ export class SectionsComponent implements OnInit {
    
     public chartHovered(e:any):void {
       console.log(e);
+    }
+
+    public lineChartData:Array<any> = [];
+  
+    setResultCharts = (res) => {
+      var chartData:Array<any> = [];
+      for(let i in res) {
+        let caldera = res[i];
+        var data = {
+          data: [caldera.inversionInicialEstimada],
+          label: caldera.tipoCaldera
+        }
+        var gasto = caldera.gastoAnualEstimado;
+        for(var j=0;j<9;++j){
+          var nuevoValor = data.data[data.data.length-1]+gasto;
+          data.data.push(nuevoValor);
+        }
+        chartData.push(data);
+      }
+      this.lineChartData = chartData;
     }
 
 }
