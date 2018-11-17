@@ -1,16 +1,16 @@
-:host {
-    // grid-area: content;
-    display: grid;
-    grid-template-rows: 50px auto;
-    grid-template-areas: 
-        "wizard"
-        "pages";
+.question {
+    justify-content: center;
+    display: flex;
+    height: 100px;
+    align-items: center;
+    background: #F8F8F8;
+    span {
+        font-weight: bold;
+    }
 }
 
-app-wizard {
-    grid-area: wizard;
-}
-
-app-pages {
-    grid-area: pages;
+.answer {
+    #map {
+        height: 300px;
+    }
 }

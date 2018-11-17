@@ -5,7 +5,22 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { ContentComponent } from './content/content.component';
 import { WizardComponent } from './content/wizard/wizard.component';
-import { PagesComponent } from './content/pages/pages.component';
+
+import { RouterModule, Routes } from '@angular/router';
+import { CalderasComponent } from './content/calderas/calderas.component';
+import { PlacasComponent } from './content/placas/placas.component';
+import { SectionsComponent } from './content/sections/sections.component';
+
+const appRoutes: Routes = [
+  { path: 'calderas', component: CalderasComponent },
+  { path: 'placas', component: PlacasComponent },
+  { path: '',
+    redirectTo: '/calderas',
+    pathMatch: 'full'
+  }
+  // ,
+  // { path: '**', component: PageNotFoundComponent }
+];
 
 @NgModule({
   declarations: [
@@ -13,9 +28,15 @@ import { PagesComponent } from './content/pages/pages.component';
     MenuComponent,
     ContentComponent,
     WizardComponent,
-    PagesComponent
+    CalderasComponent,
+    PlacasComponent,
+    SectionsComponent
   ],
   imports: [
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true } // <-- debugging purposes only
+    ),
     BrowserModule
   ],
   providers: [],

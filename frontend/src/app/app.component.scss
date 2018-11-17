@@ -3,22 +3,44 @@
     height: 100%;
     display: grid;
     grid-template-columns: 75px 125px auto;
+    grid-template-rows: 50px auto;
     grid-template-areas: 
+        "collapsed menu wizard"
         "collapsed menu content";
 }
 
 app-menu {
     grid-column-start: collapsed;
     grid-column-end: menu;
+
+    grid-row-start: collapsed;
+    grid-row-end: menu;
+
     &.collapsed {
         grid-column-end: collapsed !important;
     }
 }
 
+app-wizard {
+    grid-column-start: wizard;
+    grid-column-end: wizard;
+
+    grid-row-start: wizard;
+    grid-row-end: wizard;
+
+    &.fullWidth {
+        grid-column-start: menu;
+    }
+}
+
 app-content {
     grid-column-start: content;
+    grid-column-end: content;
+
+    grid-row-start: content;
+    grid-row-end: content;
+
     &.fullWidth {
         grid-column-start: menu !important;
     }
-    grid-column-end: content;
 }
