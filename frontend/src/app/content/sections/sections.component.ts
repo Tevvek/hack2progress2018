@@ -193,7 +193,7 @@ export class SectionsComponent implements OnInit {
 
   public lineChartColors:Array<any> = [
     { // grey 
-      backgroundColor: 'rgb(255, 161, 181)',
+      backgroundColor: 'rgba(255, 161, 181,0.5)',
       borderColor: 'rgba(148,159,177,1)',
       pointBackgroundColor: 'rgba(148,159,177,1)',
       pointBorderColor: '#fff',
@@ -201,7 +201,7 @@ export class SectionsComponent implements OnInit {
       pointHoverBorderColor: 'rgba(148,159,177,0.8)'
     },
     { // dark grey rgb(134, 199, 243)
-      backgroundColor: 'rgb(134, 199, 243)',
+      backgroundColor: 'rgba(134, 199, 243,0.5)',
       borderColor: 'rgba(77,83,96,1)',
       pointBackgroundColor: 'rgba(77,83,96,1)',
       pointBorderColor: '#fff',
@@ -209,7 +209,7 @@ export class SectionsComponent implements OnInit {
       pointHoverBorderColor: 'rgba(77,83,96,1)'
     },
     { // grey rgb(255, 226, 154) rgb(255, 226, 154) rgb(255, 226, 154)
-      backgroundColor: 'rgb(255, 226, 154)',
+      backgroundColor: 'rgba(255, 226, 154,0.5)',
       borderColor: 'rgba(148,159,177,1)',
       pointBackgroundColor: 'rgba(148,159,177,1)',
       pointBorderColor: '#fff',
@@ -217,7 +217,7 @@ export class SectionsComponent implements OnInit {
       pointHoverBorderColor: 'rgba(148,159,177,0.8)'  
     },
     { // grey
-      backgroundColor: 'rgb(236, 237, 240)',
+      backgroundColor: 'rgba(236, 237, 240,0.5)',
       borderColor: 'rgba(148,159,177,1)',
       pointBackgroundColor: 'rgba(148,159,177,1)',
       pointBorderColor: '#fff',
