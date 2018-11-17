@@ -22,6 +22,8 @@ export class SectionsComponent implements OnInit {
   isolations;
   orientations;
 
+  rows;
+
   // @Output() stepCompleted:any = new EventEmitter();
 
   constructor(private cd: ChangeDetectorRef, private generalHttpService:GeneralHttpService, private infoService:InfoService) {
@@ -77,6 +79,39 @@ export class SectionsComponent implements OnInit {
     }
     this.cd.detectChanges();
     this.initMap();
+
+    this.rows = [
+      {
+          "tipoCaldera": "BIOMASA",
+          "potencia": 11.05,
+          "inversionInicialEstimada": 6500,
+          "gastoAnualEstimado": 791.74
+      },
+      {
+          "tipoCaldera": "GASOLEO",
+          "potencia": 20,
+          "inversionInicialEstimada": 2500,
+          "gastoAnualEstimado": 2750.3
+      },
+      {
+          "tipoCaldera": "GAS",
+          "potencia": 20,
+          "inversionInicialEstimada": 1000,
+          "gastoAnualEstimado": 3161.64
+      },
+      {
+          "tipoCaldera": "ELÉCTRICA",
+          "potencia": 20,
+          "inversionInicialEstimada": 1000,
+          "gastoAnualEstimado": 3796
+      },
+      {
+          "tipoCaldera": "GAS NATURAL",
+          "potencia": 20,
+          "inversionInicialEstimada": 1000,
+          "gastoAnualEstimado": 518.36
+      }
+   ]
   }
 
   initMap = () => {
