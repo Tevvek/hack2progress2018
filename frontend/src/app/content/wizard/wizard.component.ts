@@ -8,21 +8,22 @@ import { Component, OnInit, Input } from '@angular/core';
 export class WizardComponent implements OnInit {
 
   steps:any;
+  stepsCalderas:any;
+  stepsPlacas:any;
 
-  @Input()
-  set updateStep(step:String) {
-    console.log('test', step);
-    if(step == "geolocation") {
-      this.steps[0].completed = true;
-    } else {
-      // alert('I should not be here!');
-    }
-  }
+  @Input() type:string;
 
-  constructor() { }
+  // @Input()
+  // set updateStep(step:String) {
+  //   console.log('test', step);
+  //   if(step == "geolocation") {
+  //     this.steps[0].completed = true;
+  //   } else {
+  //   }
+  // }
 
-  ngOnInit() {
-    this.steps = [
+  constructor() {
+    this.stepsCalderas = [
       {
         title: 'Localización',
         icon: 'fa-map-marked-alt',
@@ -44,6 +45,33 @@ export class WizardComponent implements OnInit {
         completed: false
       }
     ]
+
+    this.stepsPlacas = [
+      {
+        title: 'Localización',
+        icon: 'fa-map-marked-alt',
+        completed: false
+      },
+      {
+        title: 'Calificación energética',
+        icon: 'fa-star-half-alt',
+        completed: false
+      },
+      {
+        title: 'Resultado',
+        icon: 'fa-chart-line',
+        completed: false
+      }
+    ]
+
+  }
+
+  ngOnInit() {
+    if(this.type == 'calderas') {
+      this.steps = this.stepsCalderas;
+    } else if(this.type == 'placas') {
+      this.steps = this.stepsPlacas;
+    }
   }
 
 }

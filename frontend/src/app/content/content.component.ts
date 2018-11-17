@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import * as mapboxgl from 'mapbox-gl/dist/mapbox-gl';
 
 @Component({
   selector: 'app-content',
@@ -8,6 +9,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ContentComponent implements OnInit {
 
   step;
+
+  @Output() stepCompleted = new EventEmitter();
 
   constructor() { }
 

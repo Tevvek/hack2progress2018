@@ -1,16 +1,4 @@
 :host {
-    // grid-area: content;
-    display: grid;
-    grid-template-rows: 50px auto;
-    grid-template-areas: 
-        "wizard"
-        "pages";
 }
 
-app-wizard {
-    grid-area: wizard;
-}
 
-app-pages {
-    grid-area: pages;
-}

@@ -9,8 +9,10 @@
 <div id="nav__container">
     <ul id="nav">
         <li *ngFor="let option of options" class="nav__item">
-          <i class="item__icon fas fa-2x {{option.icon}}"></i>
-          <span class="item__title" *ngIf="!isCollapsed">{{option.title}}</span>
+          <a routerLink="{{option.path}}" routerLinkActive="active">
+            <i class="item__icon fas fa-2x {{option.icon}}"></i>
+            <span class="item__title" *ngIf="!isCollapsed">{{option.title}}</span>
+          </a>
         </li>
       </ul>
 </div>
