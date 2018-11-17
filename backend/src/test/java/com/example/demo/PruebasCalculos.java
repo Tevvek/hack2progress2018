@@ -22,8 +22,10 @@ public class PruebasCalculos {
 		elems.add(c3);
 
 		Caldera caldera = new Caldera(Long.valueOf(1), "cald2", (double) 8000);
-		Util.getNumeroPanelesEstimacion(ZonaClimatica.Z15,elems);
-		Util.ponteciaConvertidor(elems);
+		System.out.println("Num paneles: " + Util.getNumeroPanelesEstimacion(ZonaClimatica.Z15,elems));
+		
+		System.out.println("Potencia conversor" +Util.ponteciaConvertidor(elems));
+		System.out.println("Num baterias: " +Util.numeroBaterias(elems, 2,120));
 	}
 
 }
