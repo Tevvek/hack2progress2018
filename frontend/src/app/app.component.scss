@@ -1,0 +1,24 @@
+:host {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 75px 125px auto;
+    grid-template-areas: 
+        "collapsed menu content";
+}
+
+app-menu {
+    grid-column-start: collapsed;
+    grid-column-end: menu;
+    &.collapsed {
+        grid-column-end: collapsed !important;
+    }
+}
+
+app-content {
+    grid-column-start: content;
+    &.fullWidth {
+        grid-column-start: menu !important;
+    }
+    grid-column-end: content;
+}
