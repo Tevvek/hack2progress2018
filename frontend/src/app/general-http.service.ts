@@ -60,12 +60,12 @@ export class GeneralHttpService {
       },
       elementos: infoPaneles.elements
      }
-   
-     this.http.post('http://localhost:8080/hack2progress/calcularPaneles',  infoPanelesRequest, { headers: headers}).toPromise().then((res) => {
-         console.log(res);
-       }, (err) => 
-       {
-         console.log(err);
-       })
+     return new Promise((resolve, reject) => {
+      this.http.post('http://localhost:8080/hack2progress/calcularPaneles',  infoPanelesRequest, { headers: headers})
+        .subscribe(data => {
+          resolve(data);
+        }, err => {
+          reject({err: err});
+        })
    }
 }

@@ -122,4 +122,24 @@
 
 .answer-element {
     flex-direction: column;
+    th{
+        text-align: center;
+        // border: none;
+    }
+}
+
+#addElementPaneles {
+    height: 75%;
+    border: 2px solid #4cae4c;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 6px;
+    background-color: white;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.inputsPanel {
+    border: none;
+    border-bottom: 1px solid lightgrey;
 }

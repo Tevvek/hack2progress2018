@@ -183,9 +183,16 @@ export class SectionsComponent implements OnInit {
         this.result = true;
       });
     else if(this.type == 'placas') {
-      this.generalHttpService.postPaneles(this.placas);
+      this.generalHttpService.postPaneles(this.placas).then(panelesRes => {
+        console.log(panelesRes);  
+        this.resultPaneles = panelesRes;
+        this.resultPanel = true;
+      })
     }
   }
+
+  resultPaneles = {};
+  resultPanel = false;
 
   setSurface = (e) => {
     this.infoService.udpateData({
@@ -289,17 +296,10 @@ export class SectionsComponent implements OnInit {
     }
 
     addElement = () => {
-      // var length = this.elements.length;
-      // if(length == 0) {
-        // no hay
-        this.placas.elements.push({
-          nombre: '',
-          potencia: 0,
-          horasUso: 0
-        });
-      // } else {
-      //   var element = this.elements[length-1];
-      // }
-        console.log(this.placas.elements);
+      this.placas.elements.push({
+        nombre: '',
+        potencia: 0,
+        horasUso: 0
+      });
     }
 }
