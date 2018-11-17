@@ -12,4 +12,8 @@ export class AppComponent {
   toggleMenu = (isCollapsed) => {
     this.isMenuCollapsed = isCollapsed;
   }
+
+  test = (event) => {
+    console.log(event);
+  }
 }

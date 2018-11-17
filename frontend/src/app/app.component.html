@@ -1,2 +1,2 @@
 <app-menu (toggleEvent)="toggleMenu($event)" [ngClass]="{'collapsed': isMenuCollapsed}"></app-menu>
-<app-content [ngClass]="{'fullWidth' : isMenuCollapsed}"></app-content>
+<app-content (stepCompleted)="test($event)" [ngClass]="{'fullWidth' : isMenuCollapsed}"></app-content>
