@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { InfoService } from 'src/app/info.service';
 
 @Component({
   selector: 'app-wizard',
@@ -22,7 +23,7 @@ export class WizardComponent implements OnInit {
   //   }
   // }
 
-  constructor() {
+  constructor(private infoService:InfoService) {
     this.stepsCalderas = [
       {
         title: 'Localización',
@@ -35,8 +36,13 @@ export class WizardComponent implements OnInit {
         completed: false
       },
       {
-        title: 'Calificación energética',
+        title: 'Aislamiento',
         icon: 'fa-star-half-alt',
+        completed: false
+      },
+      {
+        title: 'Orientación',
+        icon: 'fa-compass',
         completed: false
       },
       {
@@ -72,6 +78,67 @@ export class WizardComponent implements OnInit {
     } else if(this.type == 'placas') {
       this.steps = this.stepsPlacas;
     }
+
+    let latlng = this.infoService.getLatLng();
+    if(latlng != undefined) {
+      this.setGeolocationCompleted();
+    }
+
+    let surface = this.infoService.getSurface();
+    if(surface != undefined) {
+      this.setSurfaceCompleted();
+    }
+
+    let isolation = this.infoService.getIsolation();
+    if(isolation != undefined) {
+      this.setIsolationCompleted();
+    }
+
+    let orientation = this.infoService.getOrientation();
+    if(orientation != undefined) {
+      this.setOrientationCompleted();
+    }
+
+    this.infoService.getData().subscribe((data:any) => {
+      if(data.section == 'geolocation') {
+        let latlng = data.latlng;
+        if(latlng != undefined) {
+          this.setGeolocationCompleted();
+        }
+      } else if(data.section == 'surface') {
+        let surface = data.surface;
+        if(surface != undefined) {
+          this.setSurfaceCompleted();
+        }
+      } else if(data.section == 'isolation') {
+        let isolation = data.isolation;
+        if(isolation != undefined) {
+          this.setIsolationCompleted();
+        }
+      } else if(data.section == 'orientation') {
+        let orientation = data.orientation;
+        if(orientation != undefined) {
+          this.setOrientationCompleted();
+        }
+      }
+    })
+  }
+
+  setGeolocationCompleted = () => {
+    this.stepsCalderas[0].completed = true;
+    this.stepsPlacas[0].completed = true;
+  }
+
+  setSurfaceCompleted = () => {
+    this.stepsCalderas[1].completed = true;
+  }
+
+  setIsolationCompleted = () => {
+    this.stepsCalderas[2].completed = true;
+  }
+
+  setOrientationCompleted = () => {
+    this.stepsCalderas[3].completed = true;
   }
 
 }

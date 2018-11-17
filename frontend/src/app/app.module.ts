@@ -14,7 +14,9 @@ import { SectionsComponent } from './content/sections/sections.component';
 import { FormsModule }   from '@angular/forms';
 import { GeneralHttpService } from './general-http.service';
 import { HttpClientModule, } from '@angular/common/http';
+import { InfoService } from './info.service';
 
+import { ChartsModule } from 'ng2-charts';
 
 const appRoutes: Routes = [
   { path: 'calderas', component: CalderasComponent },
@@ -44,9 +46,10 @@ const appRoutes: Routes = [
     ),
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule
   ],
-  providers: [GeneralHttpService],
+  providers: [GeneralHttpService, InfoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

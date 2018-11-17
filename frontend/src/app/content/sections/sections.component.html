@@ -11,8 +11,8 @@
         <span>¿Cuantos metros cuadrados tiene la vivienda?</span>
     </div>
     <div class="answer answer-surface">
-        <input id="surface" name="surface" class="surface__input" type="number" [(ngModel)]="calderas.surface">
-        <span>m2</span>
+        <input id="surface" name="surface" class="surface__input" type="number" [(ngModel)]="calderas.surface" min="0" max="250" (focusout)="setSurface($event)">
+        <span>m²</span>
     </div>
 </div>
 
@@ -23,7 +23,7 @@
     <div class="answer answer-isolation">
         <ul class="isolation__list">
             <li class="isolation__item" *ngFor="let iso of isolations">
-                <input id="{{iso.id}}" name="isolation" type="radio" class="isolation__input" [(ngModel)]="calderas.isolation" value="{{iso.id}}">
+                <input id="{{iso.id}}" name="isolation" type="radio" class="isolation__input" [(ngModel)]="calderas.isolation" value="{{iso.id}}" (change)="onChangeIsolation(iso.id)">
                 <label for="{{iso.id}}" class="isolation__label">{{iso.descripcion}}</label>
             </li>
         </ul>
@@ -37,7 +37,7 @@
     <div class="answer answer-orientation">
         <ul class="orientation__list">
             <li class="orientation__item" *ngFor="let ori of orientations">
-                <input id="{{ori.id}}" name="orientation" type="radio" class="orientation__input" [(ngModel)]="calderas.orientation" value="{{ori.id}}">
+                <input id="{{ori.id}}" name="orientation" type="radio" class="orientation__input" [(ngModel)]="calderas.orientation" value="{{ori.id}}" (change)="onChangeOrientation(ori.id)">
                 <label for="{{ori.id}}" class="orientation__label">{{ori.descripcion}}</label>
             </li>
         </ul>
@@ -52,3 +52,33 @@
 </div>
 
 </form>
+
+<div id="result">
+    <!-- *ngIf="" -->
+    <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
+    <div id="line-chart">
+        <canvas
+            baseChart
+            width="400"
+            height="400"
+            [datasets]="lineChartData"
+            [labels]="lineChartLabels"
+            [options]="lineChartOptions"
+            [colors]="lineChartColors"
+            [legend]="lineChartLegend"
+            [chartType]="lineChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+    </div>
+    <div id="bar-chart">
+            <canvas baseChart
+                [datasets]="lineChartData"
+                [labels]="lineChartLabels"
+                [options]="lineChartOptions"
+                [legend]="lineChartLegend"
+                [chartType]="barChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+
+    </div>
+</div>

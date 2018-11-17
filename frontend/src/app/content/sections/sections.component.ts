@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl/dist/mapbox-gl';
 import { GeneralHttpService } from 'src/app/general-http.service';
+import { InfoService } from 'src/app/info.service';
 
 @Component({
   selector: 'app-sections',
@@ -21,7 +22,9 @@ export class SectionsComponent implements OnInit {
   isolations;
   orientations;
 
-  constructor(private cd: ChangeDetectorRef, private generalHttpService:GeneralHttpService) {
+  // @Output() stepCompleted:any = new EventEmitter();
+
+  constructor(private cd: ChangeDetectorRef, private generalHttpService:GeneralHttpService, private infoService:InfoService) {
     this.calderas = {
       latlng: [],
       surface: '',
@@ -109,9 +112,35 @@ export class SectionsComponent implements OnInit {
             .setLngLat([e.lngLat.lng, e.lngLat.lat])
             .addTo(map);
             // to update the wizard
-            // this.stepCompleted.emit("geolocation");
+            // this.infoService.setLatlng();
+            // this.stepCompleted.emit({
+            // });
+            this.infoService.udpateData({
+              section: 'geolocation',
+              latlng: [e.lngLat.lat, e.lngLat.lng]
+            });
           this.calderas.latlng = [e.lngLat.lat, e.lngLat.lng];
         });
+
+        if(this.infoService.getLatLng() != undefined) {
+          let latlng:any = this.infoService.getLatLng();
+          this.marker = new mapboxgl.Marker()
+            .setLngLat([latlng[1], latlng[0]])
+            .addTo(map);
+          this.calderas.latlng = [latlng[1], latlng[0]];
+        }
+
+        if(this.infoService.getSurface() != undefined) {
+          this.calderas.surface = this.infoService.getSurface();
+        }
+
+        if(this.infoService.getIsolation() != undefined) {
+          this.calderas.isolation = this.infoService.getIsolation();
+        }
+
+        if(this.infoService.getOrientation() != undefined) {
+          this.calderas.orientation = this.infoService.getOrientation();  
+        }
       }
 
   setCalderasSection = () => {
@@ -124,5 +153,75 @@ export class SectionsComponent implements OnInit {
   onSubmit = (e) => {
     this.generalHttpService.test('a');
   }
+
+  setSurface = (e) => {
+    this.infoService.udpateData({
+      section: 'surface',
+      surface: this.calderas.surface
+    })
+  }
+
+  onChangeIsolation = (e) => {
+    this.infoService.udpateData({
+      section: 'isolation',
+      isolation: this.calderas.isolation
+    })
+  }
+
+  onChangeOrientation = (e) => {
+    this.infoService.udpateData({
+      section: 'orientation',
+      orientation: this.calderas.orientation
+    })
+  }
+
+  public lineChartData:Array<any> = [
+    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
+    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'},
+    {data: [18, 48, 77, 9, 100, 27, 40], label: 'Series C'}
+  ];
+  public lineChartLabels:Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  public lineChartOptions:any = {
+    responsive: true
+  };
+
+  public lineChartColors:Array<any> = [
+    { // grey
+      backgroundColor: 'rgba(148,159,177,0.2)',
+      borderColor: 'rgba(148,159,177,1)',
+      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    },
+    { // dark grey
+      backgroundColor: 'rgba(77,83,96,0.2)',
+      borderColor: 'rgba(77,83,96,1)',
+      pointBackgroundColor: 'rgba(77,83,96,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(77,83,96,1)'
+    },
+    { // grey
+      backgroundColor: 'rgba(148,159,177,0.2)',
+      borderColor: 'rgba(148,159,177,1)',
+      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    }
+  ];
+  public lineChartLegend:boolean = true;
+  public lineChartType:string = 'line';
+  public barChartType:string = 'bar';
+
+    // events
+    public chartClicked(e:any):void {
+      console.log(e);
+    }
+   
+    public chartHovered(e:any):void {
+      console.log(e);
+    }
 
 }

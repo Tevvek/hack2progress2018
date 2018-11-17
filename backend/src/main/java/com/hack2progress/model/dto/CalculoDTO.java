@@ -3,7 +3,7 @@ package com.hack2progress.model.dto;
 import java.util.List;
 
 public class CalculoDTO {
-	private int superficie;
+	private Integer superficie;
 	private String orientacion;
 	private String aislamiento;
 	private PosicionDTO posicion;
@@ -41,6 +41,10 @@ public class CalculoDTO {
 		
 		return valor;
 	}
+	public void setSuperficie(Integer superficie) {
+		this.superficie = superficie;
+	}
+
 	public void setOrientacion(String orientacion) {
 		this.orientacion = orientacion;
 	}
