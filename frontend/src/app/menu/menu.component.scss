@@ -25,10 +25,10 @@
         background: #ecf4f3;
         .nav__item {
             height: 50px;
+            padding-top: 10px;
             a {
                 display: flex;
-                justify-content: center;
-                align-items: center;
+                margin-left: 10px;
                 transition: 0.3s all;
                 .item__icon {
                     transition: 0.5s;
