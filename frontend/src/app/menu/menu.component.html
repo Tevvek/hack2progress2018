@@ -1,0 +1,16 @@
+<div id="title__container">
+    <h1 id="title">{{title}}</h1>
+</div>
+<div id="toggle-menu__container">
+  <button (click)="toggleMenu()">
+    <i class="fas {{isCollapsed ? 'fa-expand' : 'fa-compress'}}"></i>
+  </button>
+</div>
+<div id="nav__container">
+    <ul id="nav">
+        <li *ngFor="let option of options" class="nav__item">
+          <i class="item__icon fas fa-2x {{option.icon}}"></i>
+          <span class="item__title" *ngIf="!isCollapsed">{{option.title}}</span>
+        </li>
+      </ul>
+</div>

@@ -1,0 +1,50 @@
+:host {
+    // grid-column-start: collapsed;
+    // grid-column-end: menu;
+    // transition: 1s all;
+    // &.collapsed {
+    //     grid-column-end: collapsed !important;        
+    // }
+    display: flex;
+    flex-direction: column;
+    #title__container {
+        flex: 0 0 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background:lightcoral;
+    }
+    #toggle-menu__container {
+        flex: 0 0 30px;
+        background: lightblue;
+        display: flex;
+        justify-content: center;
+    }
+    #nav__container {
+        flex: auto;
+        background: lightblue;
+        .nav__item {
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.3s all;
+            .item__icon {
+                transition: 0.5s;
+            }
+            .item__title {
+                margin-left: 10px;
+            }
+            &:hover {
+                .item__icon {
+                    &.fa-fire {
+                        color: #c21807;
+                    }
+                    &.fa-solar-panel {
+                        color: lightgreen;
+                    }
+                }
+            }
+        }
+    }
+}
