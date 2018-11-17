@@ -20,7 +20,7 @@ public class Util {
 		String url = urlCartociudad + "lon=" + lon.toString() + "&lat=" + lat.toString();
 		Cartociudad cartociudadResponse = restTemplate.getForObject(url, Cartociudad.class);
 		//TODO devolver valor zona enum
-		ZonaClimatica zonaClimatica = ZonaClimatica.valueOf(cartociudadResponse.getProvince());
+		ZonaClimatica zonaClimatica = ZonaClimatica.getByNombre(cartociudadResponse.getProvince());
 		return zonaClimatica.getZona();
 	}
 

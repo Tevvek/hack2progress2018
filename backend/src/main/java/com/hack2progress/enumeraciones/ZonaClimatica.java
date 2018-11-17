@@ -87,5 +87,15 @@ public enum ZonaClimatica {
 		this.horasSolaresPico = horasSolaresPico;
 	}
 	
+	public static ZonaClimatica getByNombre(String nombre) {
+		ZonaClimatica zona=null;
+		for(ZonaClimatica zc: ZonaClimatica.values()) {
+			if(zc.getNombre().equalsIgnoreCase(nombre)) {
+				zona= zc;
+				break;
+			}
+		}
+		return zona;
+	}
 	
 }
