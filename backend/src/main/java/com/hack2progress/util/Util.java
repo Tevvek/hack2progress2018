@@ -20,7 +20,8 @@ public class Util {
 		String url = urlCartociudad + "lon=" + lon.toString() + "&lat=" + lat.toString();
 		Cartociudad cartociudadResponse = restTemplate.getForObject(url, Cartociudad.class);
 		//TODO devolver valor zona enum
-		return new Double("1.04");
+		ZonaClimatica zonaClimatica = ZonaClimatica.valueOf(cartociudadResponse.getProvince());
+		return zonaClimatica.getZona();
 	}
 
 	// No viable para caldera
