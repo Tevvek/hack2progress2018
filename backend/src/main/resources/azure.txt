@@ -1,0 +1,4 @@
+BD Postgres Azure.
+servidor: galiteamdb
+user: galiteamAdmin
+pass: calderasDb123.
