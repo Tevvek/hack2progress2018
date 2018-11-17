@@ -25,23 +25,25 @@
         background: lightblue;
         .nav__item {
             height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: 0.3s all;
-            .item__icon {
-                transition: 0.5s;
-            }
-            .item__title {
-                margin-left: 10px;
-            }
-            &:hover {
+            a {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: 0.3s all;
                 .item__icon {
-                    &.fa-fire {
-                        color: #c21807;
-                    }
-                    &.fa-solar-panel {
-                        color: lightgreen;
+                    transition: 0.5s;
+                }
+                .item__title {
+                    margin-left: 10px;
+                }
+                &:hover {
+                    .item__icon {
+                        &.fa-fire {
+                            color: #c21807;
+                        }
+                        &.fa-solar-panel {
+                            color: lightgreen;
+                        }
                     }
                 }
             }

@@ -1,0 +1,3 @@
+FRONTEND:
+
+1. Cambiar menu lateral para que iconos estén alineados y al hacer hover el texto de la opción se mueva ligeramente a la derecha.

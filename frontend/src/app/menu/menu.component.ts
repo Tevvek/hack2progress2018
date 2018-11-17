@@ -23,12 +23,14 @@ export class MenuComponent implements OnInit {
     this.options = [
       {
         title: 'Calderas',
-        icon: 'fa-fire'
+        icon: 'fa-fire',
+        path: '/calderas'
       }
       ,
       {
         title: 'Placas solares',
-        icon: 'fa-solar-panel'
+        icon: 'fa-solar-panel',
+        path: '/placas'
       }
     ];
   }

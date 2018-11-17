@@ -2,3 +2,8 @@ BD Postgres Azure.
 servidor: galiteamdb
 user: galiteamAdmin
 pass: calderasDb123.
+
+Docker Ubuntu Azure
+nombre host: galiteam
+nombre usuario: galiteamDocker
+pass: galiteamDocker123.
