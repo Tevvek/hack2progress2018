@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl/dist/mapbox-gl';
 import { GeneralHttpService } from 'src/app/general-http.service';
+import { InfoService } from 'src/app/info.service';
 
 @Component({
   selector: 'app-sections',
@@ -21,7 +22,9 @@ export class SectionsComponent implements OnInit {
   isolations;
   orientations;
 
-  constructor(private cd: ChangeDetectorRef, private generalHttpService:GeneralHttpService) {
+  // @Output() stepCompleted:any = new EventEmitter();
+
+  constructor(private cd: ChangeDetectorRef, private generalHttpService:GeneralHttpService, private infoService:InfoService) {
     this.calderas = {
       latlng: [],
       surface: '',
@@ -109,9 +112,35 @@ export class SectionsComponent implements OnInit {
             .setLngLat([e.lngLat.lng, e.lngLat.lat])
             .addTo(map);
             // to update the wizard
-            // this.stepCompleted.emit("geolocation");
+            // this.infoService.setLatlng();
+            // this.stepCompleted.emit({
+            // });
+            this.infoService.udpateData({
+              section: 'geolocation',
+              latlng: [e.lngLat.lat, e.lngLat.lng]
+            });
           this.calderas.latlng = [e.lngLat.lat, e.lngLat.lng];
         });
+
+        if(this.infoService.getLatLng() != undefined) {
+          let latlng:any = this.infoService.getLatLng();
+          this.marker = new mapboxgl.Marker()
+            .setLngLat([latlng[1], latlng[0]])
+            .addTo(map);
+          this.calderas.latlng = [latlng[1], latlng[0]];
+        }
+
+        if(this.infoService.getSurface() != undefined) {
+          this.calderas.surface = this.infoService.getSurface();
+        }
+
+        if(this.infoService.getIsolation() != undefined) {
+          this.calderas.isolation = this.infoService.getIsolation();
+        }
+
+        if(this.infoService.getOrientation() != undefined) {
+          this.calderas.orientation = this.infoService.getOrientation();  
+        }
       }
 
   setCalderasSection = () => {
@@ -123,6 +152,27 @@ export class SectionsComponent implements OnInit {
 
   onSubmit = (e) => {
     this.generalHttpService.test('a');
+  }
+
+  setSurface = (e) => {
+    this.infoService.udpateData({
+      section: 'surface',
+      surface: this.calderas.surface
+    })
+  }
+
+  onChangeIsolation = (e) => {
+    this.infoService.udpateData({
+      section: 'isolation',
+      isolation: this.calderas.isolation
+    })
+  }
+
+  onChangeOrientation = (e) => {
+    this.infoService.udpateData({
+      section: 'orientation',
+      orientation: this.calderas.orientation
+    })
   }
 
 }

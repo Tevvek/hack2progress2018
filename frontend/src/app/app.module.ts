@@ -14,6 +14,7 @@ import { SectionsComponent } from './content/sections/sections.component';
 import { FormsModule }   from '@angular/forms';
 import { GeneralHttpService } from './general-http.service';
 import { HttpClientModule, } from '@angular/common/http';
+import { InfoService } from './info.service';
 
 
 const appRoutes: Routes = [
@@ -46,7 +47,7 @@ const appRoutes: Routes = [
     FormsModule,
     HttpClientModule
   ],
-  providers: [GeneralHttpService],
+  providers: [GeneralHttpService, InfoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
