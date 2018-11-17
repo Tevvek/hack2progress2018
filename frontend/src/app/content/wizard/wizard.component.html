@@ -1,5 +1,5 @@
 <ul>
-  <li *ngFor="let step of steps">
+  <li *ngFor="let step of steps" class="wizardButton">
     <a [ngClass]="{'completed': step.completed}">
       <i class="fas {{step.icon}}"></i>
       <span>{{step.title}}</span>

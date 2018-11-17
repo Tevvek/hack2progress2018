@@ -28,6 +28,14 @@ a {
     color: inherit;
 }
 
-button:hover, input[type="radio"]:hover{
+button:hover, input[type="radio"]:hover, .wizardButton:hover{
     cursor:pointer;
+}
+
+.wizardButton{
+    padding-top:15px;
+}
+
+canvas{
+    width: 100% !important;
 }
