@@ -46,7 +46,6 @@
 
 <div class="section button__wrapper">
     <button type="submit">
-    <!-- <button type="button" (click)="onSubmit()"></button> -->
         <span>Confirmar</span>
     </button>
 </div>
@@ -54,31 +53,45 @@
 </form>
 
 <div id="result">
+    <div id="left">
+        <div id="line-chart">
+                <canvas
+                    baseChart
+                    [datasets]="lineChartData"
+                    [labels]="lineChartLabels"
+                    [options]="lineChartOptions"
+                    [colors]="lineChartColors"
+                    [legend]="lineChartLegend"
+                    [chartType]="lineChartType"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)"></canvas>
+            </div>
+            <div id="bar-chart">
+                    <canvas baseChart
+                        [datasets]="lineChartData"
+                        [labels]="lineChartLabels"
+                        [options]="lineChartOptions"
+                        [legend]="lineChartLegend"
+                        [chartType]="barChartType"
+                        (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)"></canvas>
+            </div>
+    </div>
+    <div id="right">
+        <table>
+            <thead>
+                <tr>
+                    <th>Tipo caldera</th>
+                    <th>Gasto anual</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let rowTabla of rows">
+                    <td>{{rowTabla.tipoCaldera}}</td>
+                    <td>{{rowTabla.gastoAnualEstimado}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <!-- *ngIf="" -->
-    <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
-    <div id="line-chart">
-        <canvas
-            baseChart
-            width="400"
-            height="400"
-            [datasets]="lineChartData"
-            [labels]="lineChartLabels"
-            [options]="lineChartOptions"
-            [colors]="lineChartColors"
-            [legend]="lineChartLegend"
-            [chartType]="lineChartType"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
-    </div>
-    <div id="bar-chart">
-            <canvas baseChart
-                [datasets]="lineChartData"
-                [labels]="lineChartLabels"
-                [options]="lineChartOptions"
-                [legend]="lineChartLegend"
-                [chartType]="barChartType"
-                (chartHover)="chartHovered($event)"
-                (chartClick)="chartClicked($event)"></canvas>
-
-    </div>
 </div>

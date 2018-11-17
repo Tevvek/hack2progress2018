@@ -9,7 +9,7 @@ export class GeneralHttpService {
 
   constructor(private http: HttpClient) { }
 
-  test = (t) => {
+  postCalderas = (infoCalderas) => {
    // let data = new URLSearchParams();
 
 
@@ -18,7 +18,13 @@ export class GeneralHttpService {
     // let options = new RequestOptions({ headers: headers });
   
     var a = this.http.post('http://localhost:8080/hack2progress/calcular',  {
-      "superficie": 20
+      superficie: infoCalderas.surface,
+      orientacion: infoCalderas.orientation,
+      aislamiento: infoCalderas.isolation,
+      posicion: {
+        lat: infoCalderas.latlng[0],
+        lon: infoCalderas.latlng[1]
+      }
     }, { headers: headers}).toPromise().then((res) => {
         console.log(res);
       }, (err) => 
@@ -26,4 +32,41 @@ export class GeneralHttpService {
         console.log(err);
       })
   }
+
+  
+  postPaneles = (infoPaneles) => {
+    // let data = new URLSearchParams();
+ 
+ 
+     let headers = new HttpHeaders();
+     headers.append('Content-Type', 'application/json');
+     // let options = new RequestOptions({ headers: headers });
+   
+     var a = this.http.post('http://localhost:8080/hack2progress/calcularPaneles',  {
+      /* superficie: infoCalderas.surface,
+       orientacion: infoCalderas.orientation,
+       aislamiento: infoCalderas.isolation,*/
+       posicion: {
+         lat: 12,
+         lon: 14
+       }/*,
+       "elementos" : [
+        {
+            "nombre":"bombillas",
+            "potencia":"60",
+            "horasUso":"12"
+        },
+        {
+            "nombre":"nevera",
+            "potencia":"120",
+            "horasUso":"6"
+        }
+    ],*/
+     }, { headers: headers}).toPromise().then((res) => {
+         console.log(res);
+       }, (err) => 
+       {
+         console.log(err);
+       })
+   }
 }
