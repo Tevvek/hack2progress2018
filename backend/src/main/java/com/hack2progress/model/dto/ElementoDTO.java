@@ -17,6 +17,9 @@ public class ElementoDTO {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	public ElementoDTO() {
+		super();
+	}
 	public Integer getPotencia() {
 		return potencia;
 	}
