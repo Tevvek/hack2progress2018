@@ -13,6 +13,7 @@ import { SectionsComponent } from './content/sections/sections.component';
 
 import { FormsModule }   from '@angular/forms';
 import { GeneralHttpService } from './general-http.service';
+import { HttpClientModule, } from '@angular/common/http';
 
 
 const appRoutes: Routes = [
@@ -42,7 +43,8 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     ),
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [GeneralHttpService],
   bootstrap: [AppComponent]
