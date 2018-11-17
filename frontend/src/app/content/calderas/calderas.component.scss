@@ -1,0 +1,16 @@
+:host {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 50px auto;
+    grid-template-areas:
+        "wizard"
+        "sections"; 
+}
+
+app-wizard {
+    grid-area: wizard;
+}
+
+app-sections {
+    grid-area: sections;
+}

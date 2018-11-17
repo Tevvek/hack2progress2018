@@ -1,16 +1,4 @@
-.question {
-    justify-content: center;
-    display: flex;
-    height: 100px;
-    align-items: center;
-    background: #F8F8F8;
-    span {
-        font-weight: bold;
-    }
+:host {
 }
 
-.answer {
-    #map {
-        height: 300px;
-    }
-}
+

@@ -11,6 +11,10 @@ import { CalderasComponent } from './content/calderas/calderas.component';
 import { PlacasComponent } from './content/placas/placas.component';
 import { SectionsComponent } from './content/sections/sections.component';
 
+import { FormsModule }   from '@angular/forms';
+import { GeneralHttpService } from './general-http.service';
+
+
 const appRoutes: Routes = [
   { path: 'calderas', component: CalderasComponent },
   { path: 'placas', component: PlacasComponent },
@@ -37,9 +41,10 @@ const appRoutes: Routes = [
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
     ),
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [GeneralHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

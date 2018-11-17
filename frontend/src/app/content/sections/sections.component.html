@@ -1,3 +1,54 @@
-<p>
-  sections works!
-</p>
+<form (ngSubmit)="onSubmit($event)" #calderasForm="ngForm">
+<div class="section" *ngIf="sections.location">
+    <div class="question">
+        <span>¿Cual es la ubicación de la vivienda?</span>
+    </div>
+    <div id="map"></div>
+</div>
+
+<div class="section" *ngIf="sections.surface">
+    <div class="question">
+        <span>¿Cuantos metros cuadrados tiene la vivienda?</span>
+    </div>
+    <div class="answer answer-surface">
+        <input id="surface" name="surface" class="surface__input" type="number" [(ngModel)]="calderas.surface">
+        <span>m2</span>
+    </div>
+</div>
+
+<div class="section" *ngIf="sections.isolation">
+    <div class="question">
+        <span>¿Cual es el aislamiento de la vivienda?</span>
+    </div>
+    <div class="answer answer-isolation">
+        <ul class="isolation__list">
+            <li class="isolation__item" *ngFor="let iso of isolations">
+                <input id="{{iso.id}}" name="isolation" type="radio" class="isolation__input" [(ngModel)]="calderas.isolation" value="{{iso.id}}">
+                <label for="{{iso.id}}" class="isolation__label">{{iso.descripcion}}</label>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="section" *ngIf="sections.orientation">
+    <div class="question">
+        <span>¿Cual es la orientación de la vivienda?</span>
+    </div>
+    <div class="answer answer-orientation">
+        <ul class="orientation__list">
+            <li class="orientation__item" *ngFor="let ori of orientations">
+                <input id="{{ori.id}}" name="orientation" type="radio" class="orientation__input" [(ngModel)]="calderas.orientation" value="{{ori.id}}">
+                <label for="{{ori.id}}" class="orientation__label">{{ori.descripcion}}</label>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="section button__wrapper">
+    <button type="submit">
+    <!-- <button type="button" (click)="onSubmit()"></button> -->
+        <span>Confirmar</span>
+    </button>
+</div>
+
+</form>
