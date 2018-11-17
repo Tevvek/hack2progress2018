@@ -22,16 +22,16 @@ public class CalculoDTO {
 	public Double getValorOrientacion() {
 		Double valor = new Double("0");
 		switch(orientacion) {
-			case "Norte":
+			case "N":
 				valor = new Double("1.12");
 				break;
-			case "Sur":
+			case "S":
 				valor = new Double("0.92");
 				break;
-			case "Este":
+			case "E":
 				valor = new Double("1");
 				break;
-			case "Oeste":
+			case "O":
 				valor = new Double("1");
 				break;
 			default:
