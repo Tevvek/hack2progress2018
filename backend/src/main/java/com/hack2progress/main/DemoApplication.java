@@ -8,8 +8,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @ComponentScan("com.hack2progress")
-@EntityScan("com.hack2progress.model")
-@EnableJpaRepositories("com.hack2progress.repository")
 public class DemoApplication {
 
 	
