@@ -71,6 +71,7 @@ public class CalderaServiceImpl implements CalderaService {
 					}
 					caldera.setInversionInicialEstimada(new Double("2500"));
 					Double gastoAnualEstimadoGasoleo = (((potenciaCaldera/Constants.POTENCIA_CALORIFICA_GASOLEO)*Constants.ESTIMACION_CALDERA_HORAS_ENCENDIDA_POR_DIA)*Constants.PRECIO_GASOLEO_CALEFACCION)*Constants.DIAS_POR_ANHO;
+					caldera.setGastoAnualEstimado(gastoAnualEstimadoGasoleo);
 				break;
 			}
 			listaCalderaResponse.add(caldera);	

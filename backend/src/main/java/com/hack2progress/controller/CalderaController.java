@@ -21,12 +21,12 @@ public class CalderaController {
 	
 	@GetMapping("/pruebas")
 	public int pruebas() {
-		System.out.println("entramossssssssss");
 		return 1;
     }
 	
-	@PostMapping(path="/calcular", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(path="/calcular")
     public List<CalderaResponse> calcular(@RequestBody CalculoDTO calculo) {
-		return calderaService.calcular(calculo);
+		List<CalderaResponse> lista = calderaService.calcular(calculo);  
+		return lista;
     }
 }
