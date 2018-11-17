@@ -27,15 +27,15 @@ public class CalderaServiceImpl implements CalderaService {
 		for(TipoCalderaEnum tipoCaldera: TipoCalderaEnum.values()) {
 			CalderaResponse caldera = new CalderaResponse();
 			caldera.setTipoCaldera(tipoCaldera.getNombre());
-			caldera.setPotencia(potenciaCaldera);
+			caldera.setPotencia(util.round(potenciaCaldera));
 			switch(tipoCaldera) {
 				case BIOMASA:
 					caldera.setInversionInicialEstimada(new Double("6500"));
-					Double gastoAnualEstimadoBiomasa=((((potenciaCaldera/Constants.POTENCIA_CALORIFICA_PELLET_HORA)*Constants.ESTIMACION_CALDERA_HORAS_ENCENDIDA_POR_DIA)
+					Double gastoAnualEstimadoBiomasa=((((caldera.getPotencia()/Constants.POTENCIA_CALORIFICA_PELLET_HORA)*Constants.ESTIMACION_CALDERA_HORAS_ENCENDIDA_POR_DIA)
 							*Constants.DIAS_POR_ANHO)
 							/Constants.PESO_SACO_PELLET)
 							*Constants.PRECIO_SACO_PELLET;
-					caldera.setGastoAnualEstimado(gastoAnualEstimadoBiomasa);
+					caldera.setGastoAnualEstimado(util.round(gastoAnualEstimadoBiomasa));
 				break;
 				case ELECTRICA:
 					//las calderas electricas solo pueden tener minimo de 20kw de potencia, porque sino no son capaces de calentar acs
@@ -43,8 +43,8 @@ public class CalderaServiceImpl implements CalderaService {
 						caldera.setPotencia(new Double("20"));
 					}
 					caldera.setInversionInicialEstimada(new Double("1000"));
-					Double gastoAnualEstimadoElectrico = (((potenciaCaldera*Constants.PRECIO_ELECTRICIDAD_KW_HORA)*Constants.ESTIMACION_CALDERA_HORAS_ENCENDIDA_POR_DIA)*Constants.DIAS_POR_ANHO);
-					caldera.setGastoAnualEstimado(gastoAnualEstimadoElectrico);
+					Double gastoAnualEstimadoElectrico = (((caldera.getPotencia()*Constants.PRECIO_ELECTRICIDAD_KW_HORA)*Constants.ESTIMACION_CALDERA_HORAS_ENCENDIDA_POR_DIA)*Constants.DIAS_POR_ANHO);
+					caldera.setGastoAnualEstimado(util.round(gastoAnualEstimadoElectrico));
 				break;
 				case GAS:
 					//las calderas de gas solo pueden tener minimo de 20kw de potencia, porque sino no son capaces de calentar acs
@@ -52,8 +52,8 @@ public class CalderaServiceImpl implements CalderaService {
 						caldera.setPotencia(new Double("20"));
 					}
 					caldera.setInversionInicialEstimada(new Double("1000"));
-					Double gastoAnualEstimadoGas = (((potenciaCaldera/Constants.POTENCIA_CALORIFICA_GAS_PROPANO)*Constants.ESTIMACION_CALDERA_HORAS_ENCENDIDA_POR_DIA)*Constants.PRECIO_KG_PROPANO)*Constants.DIAS_POR_ANHO;
-					caldera.setGastoAnualEstimado(gastoAnualEstimadoGas);
+					Double gastoAnualEstimadoGas = (((caldera.getPotencia()/Constants.POTENCIA_CALORIFICA_GAS_PROPANO)*Constants.ESTIMACION_CALDERA_HORAS_ENCENDIDA_POR_DIA)*Constants.PRECIO_KG_PROPANO)*Constants.DIAS_POR_ANHO;
+					caldera.setGastoAnualEstimado(util.round(gastoAnualEstimadoGas));
 				break;
 				case GAS_NATURAL:
 					//las calderas de gas natural solo pueden tener minimo de 20kw de potencia, porque sino no son capaces de calentar acs
@@ -61,8 +61,16 @@ public class CalderaServiceImpl implements CalderaService {
 						caldera.setPotencia(new Double("20"));
 					}
 					caldera.setInversionInicialEstimada(new Double("1000"));
-					Double gastoAnualEstimadoGasNatural = (((potenciaCaldera/Constants.POTENCIA_CALORIFICA_GAS_NATURAL)*Constants.ESTIMACION_CALDERA_HORAS_ENCENDIDA_POR_DIA)*Constants.PRECIO_GAS_NATURAL_KWH)*Constants.DIAS_POR_ANHO;
-					caldera.setGastoAnualEstimado(gastoAnualEstimadoGasNatural);
+					Double kwAnho = ((caldera.getPotencia()/Constants.POTENCIA_CALORIFICA_GAS_NATURAL)*Constants.ESTIMACION_CALDERA_HORAS_ENCENDIDA_POR_DIA)*Constants.DIAS_POR_ANHO;
+					int terminoFijo = Constants.PRECIO_GAS_NATURAL_TER_FIJO_3_1 * 12;
+					Double precioKwhAnho = kwAnho*Constants.PRECIO_GAS_NATURAL_KWH_TER_FIJO_3_1;
+					//si la potencia anual consumida va a ser mayor de 7000 kw/h es mejor utilizar la tarifa de termino fijo 3.2
+					if(kwAnho>7000) {
+						terminoFijo = Constants.PRECIO_GAS_NATURAL_TER_FIJO_3_2*12;
+						precioKwhAnho = kwAnho*Constants.PRECIO_GAS_NATURAL_KWH_TER_FIJO_3_2;
+					}
+					Double total = terminoFijo + precioKwhAnho;
+					caldera.setGastoAnualEstimado(util.round(total));
 				break;
 				case GASOLEO:
 					//las calderas de gasoleo solo pueden tener minimo de 20kw de potencia, porque sino no son capaces de calentar acs
@@ -70,8 +78,8 @@ public class CalderaServiceImpl implements CalderaService {
 						caldera.setPotencia(new Double("20"));
 					}
 					caldera.setInversionInicialEstimada(new Double("2500"));
-					Double gastoAnualEstimadoGasoleo = (((potenciaCaldera/Constants.POTENCIA_CALORIFICA_GASOLEO)*Constants.ESTIMACION_CALDERA_HORAS_ENCENDIDA_POR_DIA)*Constants.PRECIO_GASOLEO_CALEFACCION)*Constants.DIAS_POR_ANHO;
-					caldera.setGastoAnualEstimado(gastoAnualEstimadoGasoleo);
+					Double gastoAnualEstimadoGasoleo = (((caldera.getPotencia()/Constants.POTENCIA_CALORIFICA_GASOLEO)*Constants.ESTIMACION_CALDERA_HORAS_ENCENDIDA_POR_DIA)*Constants.PRECIO_GASOLEO_CALEFACCION)*Constants.DIAS_POR_ANHO;
+					caldera.setGastoAnualEstimado(util.round(gastoAnualEstimadoGasoleo));
 				break;
 			}
 			listaCalderaResponse.add(caldera);	
