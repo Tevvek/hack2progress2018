@@ -12,9 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hack2progress.model.dto.CalculoDTO;
 import com.hack2progress.model.dto.response.CalderaResponse;
 import com.hack2progress.service.CalderaService;
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@CrossOrigin(origins = "*")
 public class CalderaController {
 	
 	@Autowired
