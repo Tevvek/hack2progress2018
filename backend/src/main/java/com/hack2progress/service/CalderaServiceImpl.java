@@ -69,7 +69,7 @@ public class CalderaServiceImpl implements CalderaService {
 						terminoFijo = Constants.PRECIO_GAS_NATURAL_TER_FIJO_3_2*12;
 						precioKwhAnho = kwAnho*Constants.PRECIO_GAS_NATURAL_KWH_TER_FIJO_3_2;
 					}
-					Double total = terminoFijo + precioKwhAnho;
+					Double total = (terminoFijo + precioKwhAnho)*3;
 					caldera.setGastoAnualEstimado(util.round(total));
 				break;
 				case GASOLEO:

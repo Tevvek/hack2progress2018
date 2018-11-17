@@ -1,6 +1,7 @@
 package com.hack2progress.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,7 +24,7 @@ public class PanelesController {
 		return 1;
     }
 	
-	@PostMapping(path="/calcularPaneles")
+	@PostMapping(path="/calcularPaneles", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
     public PanelesResponse calcular(@RequestBody CalculoPanelesDTO calculo) {
 		return panelesService.calcular(calculo);  
     }
