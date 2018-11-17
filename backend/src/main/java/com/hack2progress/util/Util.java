@@ -23,6 +23,10 @@ public class Util {
 		ZonaClimatica zonaClimatica = ZonaClimatica.getByNombre(cartociudadResponse.getProvince());
 		return zonaClimatica.getZona();
 	}
+	
+	public Double round(Double valor) {
+		return Math.round(valor*100.0)/100.0;
+	}
 
 	// No viable para caldera
 /*	public static int getNumeroPanelesEstimacion(Double horasUsoCaldera, Double potenciaCaldera, ZonaClimatica zonaClimatica,

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +15,7 @@ import com.hack2progress.model.dto.response.CalderaResponse;
 import com.hack2progress.service.CalderaService;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class CalderaController {
 	
 	@Autowired

@@ -12,5 +12,8 @@ public class Constants {
 	public static final Double POTENCIA_CALORIFICA_GASOLEO=new Double("9.98");
 	public static final Double PRECIO_GASOLEO_CALEFACCION = new Double("0.94");
 	public static final Double POTENCIA_CALORIFICA_GAS_NATURAL = new Double("11.7");
-	public static final Double PRECIO_GAS_NATURAL_KWH = new Double("0.05");
+	public static final Double PRECIO_GAS_NATURAL_KWH_TER_FIJO_3_1 = new Double("0.05");
+	public static final Double PRECIO_GAS_NATURAL_KWH_TER_FIJO_3_2 = new Double("0.04");
+	public static final int PRECIO_GAS_NATURAL_TER_FIJO_3_1 = 4;
+	public static final int PRECIO_GAS_NATURAL_TER_FIJO_3_2 = 8;
 }
