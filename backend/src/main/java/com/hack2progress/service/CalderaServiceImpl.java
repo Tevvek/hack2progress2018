@@ -15,8 +15,10 @@ public class CalderaServiceImpl implements CalderaService {
 	
 	@Override
 	public CalculoResponse calcular(CalculoDTO calculo) {
+		CalculoResponse calculoResponse = new CalculoResponse();
 		Double valorZC = util.getValorZonaClimatica(calculo.getPosicion().getLon(), calculo.getPosicion().getLat());
-		Double potenciaKW = (calculo.getSuperficie() * calculo.getValorOrientacion() * calculo.getValorAislamiento() * valorZC * 85)/1000;
+		Double potenciaCaldera = (calculo.getSuperficie() * calculo.getValorOrientacion() * calculo.getValorAislamiento() * valorZC * 85)/1000;
+		
 		return new CalculoResponse();
 	}
 
