@@ -1,9 +1,15 @@
 package com.hack2progress.model.dto;
 
 public class ElementoDTO {
+	public ElementoDTO(String nombre, Integer potencia, Integer horasUso) {
+		super();
+		this.nombre = nombre;
+		this.potencia = potencia;
+		this.horasUso = horasUso;
+	}
 	private String nombre;
-	private Double potencia;
-	private Double horasUso;
+	private Integer potencia;
+	private Integer horasUso;
 	
 	public String getNombre() {
 		return nombre;
@@ -11,16 +17,19 @@ public class ElementoDTO {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public Double getPotencia() {
+	public ElementoDTO() {
+		super();
+	}
+	public Integer getPotencia() {
 		return potencia;
 	}
-	public void setPotencia(Double potencia) {
+	public void setPotencia(Integer potencia) {
 		this.potencia = potencia;
 	}
-	public Double getHorasUso() {
+	public Integer getHorasUso() {
 		return horasUso;
 	}
-	public void setHorasUso(Double horasUso) {
+	public void setHorasUso(Integer horasUso) {
 		this.horasUso = horasUso;
 	}
 }
