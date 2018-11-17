@@ -35,11 +35,23 @@ public enum ZonaClimatica {
 	Z28("Madrid", 4, new Double(7.58394)),
 	Z29("Málaga", 1, new Double(2.33352)),
 	Z30("Murcia", 2, new Double(2.946069)),
-	
-	Z36("Pontevedra", 3, new Double(1.5)),
-	Z32("Orense", 3, new Double(1.5)),
-	
-	;
+	Z31("Navarra", 4, new Double(1.45845)),
+	Z32("Orense", 3, new Double(4.08366)),
+	Z34("Palencia", 4, new Double(2.62521)),
+	Z35("Las Palmas", 1, new Double(3.266928)),	
+	Z36("Pontevedra", 3, new Double(3.79197)),
+	Z26("La Rioja", 4, new Double(1.633464)),
+	Z37("Salamanca", 4, new Double(1.779309)),
+	Z40("Segovia", 4, new Double(1.662633)),
+	Z41("Sevilla", 2, new Double(6.70887)),
+	Z42("Soria", 5, new Double(1.720971)),
+	Z43("Tarragona", 2, new Double(2.129337)),
+	Z44("Teruel", 4, new Double(3.20859)),
+	Z45("Toledo", 3, new Double(4.08366)),
+	Z46("Valencia", 2, new Double(3.50028)),
+	Z47("Valladolid", 4, new Double(6.70887)),
+	Z49("Zamora", 4, new Double(6.41718)),
+	Z50("Zaragoza", 4, new Double(1.837647));
 	
 	private String nombre;
 	private int zona;
