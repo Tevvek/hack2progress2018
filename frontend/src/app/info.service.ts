@@ -26,6 +26,8 @@ export class InfoService {
       this.isolation = data.isolation;
     } else if(data.section == 'orientation') {
       this.orientation = data.orientation;
+    } else if(data.section == 'result') {
+      // ??
     }
     this.obs$.next(data);
   }

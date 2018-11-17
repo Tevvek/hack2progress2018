@@ -59,8 +59,8 @@ export class WizardComponent implements OnInit {
         completed: false
       },
       {
-        title: 'Calificación energética',
-        icon: 'fa-star-half-alt',
+        title: 'Elementos',
+        icon: 'fa-lightbulb',
         completed: false
       },
       {
@@ -120,8 +120,15 @@ export class WizardComponent implements OnInit {
         if(orientation != undefined) {
           this.setOrientationCompleted();
         }
+      } else if(data.section == 'result'){
+        this.setResultCompleted();
       }
     })
+  }
+
+  setResultCompleted = () => {
+    this.stepsCalderas[this.stepsCalderas.length -1].completed = true;
+    this.stepsPlacas[this.stepsPlacas.length -1].completed = true;
   }
 
   setGeolocationCompleted = () => {

@@ -37,7 +37,8 @@ export class SectionsComponent implements OnInit {
       'location': false,
       'surface': false,
       'isolation': false,
-      'orientation' : false
+      'orientation' : false,
+      'elements': false
     }
     this.isolations = [
       {
@@ -76,6 +77,8 @@ export class SectionsComponent implements OnInit {
   ngOnInit() {
     if(this.type == 'calderas') {
       this.setCalderasSection();
+    } else if(this.type == 'placas') {
+      this.setPlacasSection();
     }
     this.cd.detectChanges();
     this.initMap();
@@ -151,6 +154,15 @@ export class SectionsComponent implements OnInit {
     this.sections.surface = true;
     this.sections.isolation = true;
     this.sections.orientation = true;
+    this.sections.elements = false;
+  }
+
+  setPlacasSection = () => {
+    this.sections.location = true;
+    this.sections.surface = false;
+    this.sections.isolation = false;
+    this.sections.orientation = false;
+    this.sections.elements = true;
   }
 
   result = false;
@@ -159,6 +171,9 @@ export class SectionsComponent implements OnInit {
       this.generalHttpService.postCalderas(this.calderas).then(calderasRes => {
         this.setResultCharts(calderasRes);
         this.rows = calderasRes;
+        this.infoService.udpateData({
+          section: 'result',
+        })
         this.result = true;
       });
     else if(this.type == 'placas')
