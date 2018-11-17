@@ -12,23 +12,23 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background:lightcoral;
+        background:#5cb85c;
     }
     #toggle-menu__container {
         flex: 0 0 30px;
-        background: lightblue;
+        background: #ecf4f3;
         display: flex;
         justify-content: center;
     }
     #nav__container {
         flex: auto;
-        background: lightblue;
+        background: #ecf4f3;
         .nav__item {
             height: 50px;
+            padding-top: 10px;
             a {
                 display: flex;
-                justify-content: center;
-                align-items: center;
+                margin-left: 10px;
                 transition: 0.3s all;
                 .item__icon {
                     transition: 0.5s;

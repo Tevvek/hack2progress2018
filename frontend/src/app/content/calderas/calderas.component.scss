@@ -9,6 +9,11 @@
 
 app-wizard {
     grid-area: wizard;
+    position: fixed;
+    width: 84%;
+    background-color: white;
+    padding-bottom: 15px;
+    z-index: 1000;
 }
 
 app-sections {

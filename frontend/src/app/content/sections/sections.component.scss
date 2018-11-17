@@ -64,14 +64,58 @@
     height: 50px;
 }
 
+.button__wrapper button{
+    height: 75%;
+    border: 2px solid #4cae4c;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 6px;
+    background-color: white;
+    border-radius: 6px;
+}
 
+.button__wrapper button:hover{
+    background-color: #5cb85c;
+    color: white;
+}
 
 #line-chart {
-    width: 50%;
-    height: 200px;
+    // width: 50%;
+    min-width: 0;
 }
 
 #bar-chart {
-    width: 100%;
-    height: 200px;
+    // width: 50%;
+    min-width: 0;
 }
+
+#result{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    #left {
+        flex: 1;
+        // float: left;
+    }
+    #right {
+        flex: 1;
+        // width: 50%;
+        // float: right;
+    }
+}
+
+body {
+    font: normal medium/1.4 sans-serif;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+    padding: 0.25rem;
+    text-align: left;
+    border: 1px solid #ccc;
+  }
+  tbody tr:nth-child(odd) {
+    background: #eee;
+  }
