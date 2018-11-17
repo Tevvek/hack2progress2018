@@ -44,7 +44,7 @@ export class SectionsComponent implements OnInit {
       },
       {
         id: 'sencillo',
-        descripcion: 'Asilamiento sencillo: Ventanal sencillo y tabique doble o ventanal doble y tabique sencillo' 
+        descripcion: 'Aislamiento sencillo: Ventanal sencillo y tabique doble o ventanal doble y tabique sencillo' 
       },
       {
         id: 'niguno',
@@ -151,7 +151,10 @@ export class SectionsComponent implements OnInit {
   }
 
   onSubmit = (e) => {
-    this.generalHttpService.test('a');
+    if(this.type == 'calderas')
+      this.generalHttpService.postCalderas(this.calderas);
+    else if(this.type == 'placas')
+      this.generalHttpService.postPaneles(null);
   }
 
   setSurface = (e) => {
