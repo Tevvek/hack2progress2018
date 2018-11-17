@@ -11,11 +11,15 @@ public class Caldera {
 	
 	@Column(columnDefinition="description", nullable= false)
 	private String description;
+	
+	@Column(columnDefinition="potencia", nullable= false)
+	private Double potencia;
 
-	public Caldera(Long id, String description) {
+	public Caldera(Long id, String description, Double potencia) {
 		super();
 		this.id = id;
 		this.description = description;
+		this.potencia = potencia;
 	}
 
 	
@@ -41,6 +45,16 @@ public class Caldera {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public Double getPotencia() {
+		return potencia;
+	}
+
+
+
+	public void setPotencia(Double potencia) {
+		this.potencia = potencia;
 	}
 	
 	
