@@ -13,20 +13,20 @@ import com.hack2progress.model.dto.CalculoDTO;
 import com.hack2progress.model.dto.response.CalderaResponse;
 import com.hack2progress.service.CalderaService;
 
-@RestController("/caldera")
+@RestController
 public class CalderaController {
 	
 	@Autowired
 	private CalderaService calderaService;
 	
 	@GetMapping("/pruebas")
-	public int pruebas(@RequestBody CalculoDTO calculo) {
-		System.out.println("entramossssssssss");
+	public int pruebas() {
 		return 1;
     }
 	
-	@PostMapping(path="/calcular", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(path="/calcular")
     public List<CalderaResponse> calcular(@RequestBody CalculoDTO calculo) {
-		return calderaService.calcular(calculo);
+		List<CalderaResponse> lista = calderaService.calcular(calculo);  
+		return lista;
     }
 }
