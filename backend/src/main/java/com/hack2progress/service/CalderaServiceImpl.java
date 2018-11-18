@@ -42,7 +42,7 @@ public class CalderaServiceImpl implements CalderaService {
 					if(potenciaCaldera<20) {
 						caldera.setPotencia(new Double("20"));
 					}
-					caldera.setInversionInicialEstimada(new Double("1000"));
+					caldera.setInversionInicialEstimada(new Double("700"));
 					Double gastoAnualEstimadoElectrico = (((caldera.getPotencia()*Constants.PRECIO_ELECTRICIDAD_KW_HORA)*Constants.ESTIMACION_CALDERA_HORAS_ENCENDIDA_POR_DIA)*Constants.DIAS_POR_ANHO);
 					caldera.setGastoAnualEstimado(util.round(gastoAnualEstimadoElectrico));
 				break;
@@ -51,7 +51,7 @@ public class CalderaServiceImpl implements CalderaService {
 					if(potenciaCaldera<20) {
 						caldera.setPotencia(new Double("20"));
 					}
-					caldera.setInversionInicialEstimada(new Double("1000"));
+					caldera.setInversionInicialEstimada(new Double("900"));
 					Double gastoAnualEstimadoGas = (((caldera.getPotencia()/Constants.POTENCIA_CALORIFICA_GAS_PROPANO)*Constants.ESTIMACION_CALDERA_HORAS_ENCENDIDA_POR_DIA)*Constants.PRECIO_KG_PROPANO)*Constants.DIAS_POR_ANHO;
 					caldera.setGastoAnualEstimado(util.round(gastoAnualEstimadoGas));
 				break;
@@ -60,7 +60,7 @@ public class CalderaServiceImpl implements CalderaService {
 					if(potenciaCaldera<20) {
 						caldera.setPotencia(new Double("20"));
 					}
-					caldera.setInversionInicialEstimada(new Double("1000"));
+					caldera.setInversionInicialEstimada(new Double("600"));
 					Double kwAnho = ((caldera.getPotencia()/Constants.POTENCIA_CALORIFICA_GAS_NATURAL)*Constants.ESTIMACION_CALDERA_HORAS_ENCENDIDA_POR_DIA)*Constants.DIAS_POR_ANHO;
 					int terminoFijo = Constants.PRECIO_GAS_NATURAL_TER_FIJO_3_1 * 12;
 					Double precioKwhAnho = kwAnho*Constants.PRECIO_GAS_NATURAL_KWH_TER_FIJO_3_1;
